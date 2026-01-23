@@ -1,0 +1,15 @@
+---
+const { title } = Astro.props;
+---
+<html>
+<head>
+   <title></title>
+</head>
+<body>
+    <h1>Title Passed From Child: {title}</h1>
+    <h2>Content is below in slot:</h2>
+    <slot />
+    <footer>Footer From Layout</footer>
+    <slot name="slot-after-footer" />
+</body>
+</html>

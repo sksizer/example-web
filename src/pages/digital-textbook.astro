@@ -1,0 +1,75 @@
+---
+
+---
+<html>
+<head>
+    <title>Digital Textbook</title>
+</head>
+<body>
+<div>
+    <header>Header</header>
+    <div id="nav">
+        <h1>Nav</h1>
+        <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ul>
+    </div>
+    <main>
+        main
+        <div class="info">
+            <h1 class="huge">Huge</h1>
+            <h1 class="tiny">Tiny</h1>
+        </div>
+    </main>
+    <div id="secondary">
+        secondary
+    </div>
+    <footer>footer</footer>
+</div>
+</body>
+</html>
+
+<style>
+    /** CSS Reset **/
+
+    /** LAYOUT **/
+    header, footer {
+        backdrop-filter: blur(10px);
+        background: pink;
+        width: 100%;
+        height: 2em;
+        position: absolute;
+    }
+
+    header {
+        top: 0;
+    }
+    main {
+
+    }
+    footer {
+        bottom: 0;
+    }
+    #nav {
+        height: 80vh;
+        width: 20vh;
+        border: 1px solid black;
+        background: lavender;
+    }
+
+    @media only screen and (max-width: 1280px) {
+        .huge {
+            display: none;
+            color: red;
+        }
+    }
+
+    @media only screen and (min-width: 512px) {
+        .tiny {
+            display: none;
+            color: red;
+        }
+    }
+</style>

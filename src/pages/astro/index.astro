@@ -1,0 +1,16 @@
+---
+import Default from '../../layouts/default.astro';
+import Directory from '../../components/Directory.astro'
+import type { SiteMap } from "../../model/site-map.ts";
+
+const dir: SiteMap = [
+	{
+		label: "Transition Persistence",
+		url: "/astro/transition-persistence",
+	},
+];
+---
+<Default>
+    <a href="/">Back</a>
+    <Directory entries = {dir} />
+</Default>

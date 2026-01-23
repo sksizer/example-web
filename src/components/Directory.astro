@@ -1,0 +1,20 @@
+---
+import type { SiteMap } from "../model/site-map.ts";
+
+export interface Props {
+	entries: SiteMap;
+}
+
+const entries: SiteMap = Astro.props.entries;
+import DirectoryView from './Directory.astro';
+---
+<ul>
+    {entries.map(entry => (
+        <li>
+            <a href={entry.url}>{entry.label}</a>
+            {entry.children && entry.children.length > 0 &&
+                    <DirectoryView entries={entry.children} />
+           }
+        </li>))
+    }
+</ul>

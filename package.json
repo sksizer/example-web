@@ -1,14 +1,24 @@
 {
-  "name": "example-web",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^5.16.15"
-  }
+	"name": "example-web",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"lint": "pnpm clean",
+		"format": "pnpm clean",
+		"clean": "biome check --write",
+		"clean:unsafe": "biome check --write --unsafe",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^4.3.13",
+		"@astrojs/vue": "^5.1.4",
+		"@biomejs/biome": "2.3.12",
+		"astro": "^5.16.15",
+		"vitest": "^4.0.18",
+		"vue": "^3.5.27"
+	}
 }

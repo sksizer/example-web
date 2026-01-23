@@ -1,0 +1,12 @@
+---
+import StatefulComponent from "../../../components/astro/transition-persistence/StatefulComponent.vue";
+import Layout from "./layout.astro";
+---
+
+<Layout>
+    <StatefulComponent id="counter" client:load transition:persist transition:name="counter" />
+    <ul>
+        <li>Index: <a href="/astro/transition-persistence">Index</a></li>
+        <li>Page Two: <a href="/astro/transition-persistence/two">Two</a></li>
+    </ul>
+</Layout>

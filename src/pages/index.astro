@@ -1,5 +1,6 @@
 ---
-
+import DirectoryView from '../components/Directory.astro'
+import { site } from '../model/site-map.ts'
 ---
 
 <html lang="en">
@@ -12,6 +13,7 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>Links</h1>
+        <DirectoryView entries={site} />
 	</body>
 </html>

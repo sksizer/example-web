@@ -1,0 +1,16 @@
+---
+import ExampleLayout from '../../layouts/example-layout.astro'
+---
+<ExampleLayout title="This is the title passed from the child">
+    <div>
+        This is the element from the child inserted into the layout slot.
+    </div>
+</ExampleLayout>
+
+<div slot="after-footer">
+    <h1>After Footer Content From Child</h1>
+    <ul>
+        <li>one</li>
+        <li>two</li>
+    </ul>
+</div>
