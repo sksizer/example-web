@@ -16,4 +16,9 @@ export const links: SiteMap = [
 		url: "/astro/mdx",
 		description: "Astro MDX integration using astro layout features",
 	},
+    {
+        label: "MDX From Collection",
+        url: "/astro/mdx-from-collection",
+        description: "Astro MDX integration from using an astro collection",
+    },
 ];

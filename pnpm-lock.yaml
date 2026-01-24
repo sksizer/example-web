@@ -9,25 +9,25 @@ importers:
   .:
     dependencies:
       '@astrojs/mdx':
-        specifier: ^4.3.13
+        specifier: 4.3.13
         version: 4.3.13(astro@5.16.15(rollup@4.56.0)(typescript@5.9.3))
       '@astrojs/vue':
-        specifier: ^5.1.4
+        specifier: 5.1.4
         version: 5.1.4(astro@5.16.15(rollup@4.56.0)(typescript@5.9.3))(rollup@4.56.0)(vue@3.5.27(typescript@5.9.3))
       '@biomejs/biome':
         specifier: 2.3.12
         version: 2.3.12
       astro:
-        specifier: ^5.16.15
+        specifier: 5.16.15
         version: 5.16.15(rollup@4.56.0)(typescript@5.9.3)
       lorem-ipsum:
-        specifier: ^2.0.8
+        specifier: 2.0.8
         version: 2.0.8
       vitest:
-        specifier: ^4.0.18
+        specifier: 4.0.18
         version: 4.0.18
       vue:
-        specifier: ^3.5.27
+        specifier: 3.5.27
         version: 3.5.27(typescript@5.9.3)
 
 packages:
