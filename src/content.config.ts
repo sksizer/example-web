@@ -11,6 +11,18 @@ const testDocs= defineCollection({
     })
 })
 
+const blog = defineCollection({
+    loader: glob({
+        pattern: "**/*.mdx",
+        base: "./content/blog"
+    }),
+    schema: z.object({
+        title: z.string(),
+        slug: z.optional(z.string())
+    })
+})
+
 export const collections = {
-    testDocs
+    testDocs,
+    blog
 }

@@ -1,0 +1,55 @@
+---
+import { getCollection, render, getEntry } from 'astro:content'
+import type { CollectionEntry  } from 'astro:content';
+import getSlug from '../../../utils/getSlug.ts';
+import {ClientRouter} from "astro:transitions";
+import TestUnmount from "../../../components/astro/blog/TestUnmount.vue"
+
+type BlogEntry = CollectionEntry<'blog'>;
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection('blog')
+    return blogEntries.map((entry: BlogEntry) => {
+        return {
+        params:  { slug: getSlug(entry) },
+        props:  { entry }}
+    })}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry)
+const entries = await getCollection('blog');
+---
+
+<html>
+<head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Transitions With NavBar Test</title>
+    <ClientRouter></ClientRouter>
+</head>
+<body>
+<div id="navBar" transition:persist transition:name = "nav">
+    <h1>Count <span id="counter">0</span></h1>
+    <ul>
+        {entries.map((entry: BlogEntry) => (
+                <li><a href=`/astro/blog/${getSlug(entry)}`>{entry.data.title}</a></li>
+        ))}
+    </ul>
+    <script>
+        console.log('test1')
+        const links = document.querySelectorAll('#navBar a')
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const counter = document.querySelector('#counter');
+                counter.innerHTML = Number(counter?.innerHTML) + 1;
+            })
+            console.log('link', link);
+        })
+    </script>
+</div>
+
+<h1>Content Should Be Below</h1>
+<Content />
+<TestUnmount client:idle transition:persist transition:name = "testUnmount"/>
+</body>
+</html>
