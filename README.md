@@ -1,33 +1,14 @@
-# Astro Starter Kit: Minimal
+# Example Web
+Scratch space for:
+- reviewing or learning css, or other web frontend stack (such as astro)
+- maintaining useful examples for reference or prototypes
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Using astro for education in that framework and because it is so damn convenient. 
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Misc Notes
+Used default astro generator
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── css/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/css/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+## Commands
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -38,6 +19,5 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Code Quality
+- biome
