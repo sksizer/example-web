@@ -1,0 +1,157 @@
+---
+const navItems = new Array(200).fill(0).map((_, i) => {
+	return i;
+});
+
+import { LoremIpsum } from "lorem-ipsum";
+
+const lorem = new LoremIpsum({
+	sentencesPerParagraph: {
+		max: 8,
+		min: 4,
+	},
+	wordsPerSentence: {
+		max: 16,
+		min: 4,
+	},
+});
+
+const content = lorem.generateParagraphs(30);
+---
+<html>
+<head>
+    <title>IDE</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+</head>
+<body>
+<div class="fullPage">
+    <header>
+        <div class="leftMenu">
+            <ul>
+                <li>Settings</li>
+                <li>Files</li>
+                <li>Edit</li>
+                <li>Help</li>
+            </ul>
+        </div>
+        <div class="rightMenu">
+            <ul>
+                <li>Username</li>
+                <li>Logout</li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="sidebarLeft">
+            <div id="nav">
+                <h1>Nav</h1>
+                <ul>
+                    {navItems.map((item, i) => {
+                        return (<li>{item}</li>)
+                    })}
+                </ul>
+            </div>
+        </div>
+        <div class="center">
+            {content}
+        </div>
+        <div class="sidebarRight">
+            <ul>
+                {navItems.map((item, i) => {
+                    return (<li>{item}</li>)
+                })}
+            </ul>
+            <div class="info">
+                <h1 class="huge">Huge</h1>
+                <h1 class="tiny">Tiny</h1>
+            </div>
+        </div>
+    </main>
+    <footer>Copyright 2026</footer>
+</div>
+</body>
+</html>
+
+<style>
+    html, body {
+        overscroll-behavior: none;
+    }
+    .fullPage {
+        height: 100dvh;
+        width: 100dvw;
+        background-color: hotpink;
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: 1lh 1fr 1lh;
+    }
+    /** LAYOUT **/
+    header, footer {
+        backdrop-filter: blur(10px);
+        background: pink;
+        width: 100%;
+        //line-height: 1em;
+        //position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    header ul {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    header ul li {
+        margin: 0 10px;
+    }
+    header .left {
+
+    }
+    header .right {
+
+    }
+
+    header {
+        top: 0;
+    }
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        min-height: 0;
+    }
+
+    .sidebarLeft, .center, .sidebarRight {
+        min-height: 0;
+        overflow: scroll;
+        overscroll-behavior: unset;
+    }
+
+    #nav {
+        border: 1px solid black;
+        background: lavender;
+        overflow: scroll;
+        height: 100%;
+    }
+
+    #sidebarRight {
+    }
+
+    footer {
+        //bottom: 0;
+        justify-content: end;
+        align-items: center;
+    }
+
+    @media only screen and (max-width: 1280px) {
+        .huge {
+            display: none;
+            color: red;
+        }
+    }
+
+    @media only screen and (min-width: 800px) {
+        .tiny {
+            display: none;
+            color: red;
+        }
+    }
+</style>

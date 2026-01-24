@@ -6,7 +6,8 @@ export interface Props {
 }
 
 const entries: SiteMap = Astro.props.entries;
-import DirectoryView from './Directory.astro';
+
+import DirectoryView from "./Directory.astro";
 ---
 <ul>
     {entries.map(entry => (
