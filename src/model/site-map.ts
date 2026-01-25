@@ -1,4 +1,4 @@
-import { links } from "./site/astro.ts";
+import { links } from "./site/astro";
 import { css } from "./site/css.ts";
 import examples from "./site/examples.ts";
 

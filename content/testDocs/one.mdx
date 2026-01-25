@@ -7,6 +7,9 @@ import VueExample from '../../src/components/astro/mdx/StatefulComponent.vue'
 
 This is a test.
 
-{frontmatter.title}
+This is the title from frontmatter: {frontmatter.title}
 
+Below is a Vue component used inline in mdx content with client:load directive
+<hr />
 <VueExample client:load />
+<hr />

@@ -1,0 +1,19 @@
+---
+import {getEntry, render} from 'astro:content';
+
+const entry = await getEntry('testDocs', 'one');
+const { Content } = await render(entry)
+---
+<h1>Rendering an MDX from a content collection</h1>
+
+<div class="contentContainer">
+    <Content />
+</div>
+
+<style>
+    .contentContainer{
+        //background: #eee;
+        margin: 0.5rem;
+        border: 0.5rem solid #ddd;
+    }
+</style>

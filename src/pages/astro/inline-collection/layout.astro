@@ -1,0 +1,17 @@
+---
+import { getCollection  } from "astro:content"
+const inlineCollection = await getCollection("inlineCollection");
+
+---
+
+<nav>
+    <ul>
+        {inlineCollection.map((entry) => (
+                <li><a href=`/astro/inline-collection/${entry.id}`>{entry.id}</a></li>
+        ))}
+    </ul>
+</nav>
+
+<main>
+    <slot />
+</main>

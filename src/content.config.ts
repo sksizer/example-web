@@ -22,7 +22,17 @@ const blog = defineCollection({
     })
 })
 
+const inlineCollection = defineCollection({
+    loader: glob({
+        pattern: "**/*.mdx",
+        base: "./src/pages/astro/inline-collection"
+        // base: "./content/blog"
+    }),
+    schema: z.object({})
+})
+
 export const collections = {
+    blog,
+    inlineCollection,
     testDocs,
-    blog
 }
