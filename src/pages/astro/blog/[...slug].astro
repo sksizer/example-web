@@ -1,23 +1,25 @@
 ---
-import { getCollection, render, getEntry } from 'astro:content'
-import type { CollectionEntry  } from 'astro:content';
-import getSlug from '../../../utils/getSlug.ts';
-import {ClientRouter} from "astro:transitions";
-import TestUnmount from "../../../components/astro/blog/TestUnmount.vue"
+import type { CollectionEntry } from "astro:content";
+import { getCollection, getEntry, render } from "astro:content";
+import { ClientRouter } from "astro:transitions";
+import TestUnmount from "../../../components/astro/blog/TestUnmount.vue";
+import getSlug from "../../../utils/getSlug.ts";
 
-type BlogEntry = CollectionEntry<'blog'>;
+type BlogEntry = CollectionEntry<"blog">;
 
 export async function getStaticPaths() {
-    const blogEntries = await getCollection('blog')
-    return blogEntries.map((entry: BlogEntry) => {
-        return {
-        params:  { slug: getSlug(entry) },
-        props:  { entry }}
-    })}
+	const blogEntries = await getCollection("blog");
+	return blogEntries.map((entry: BlogEntry) => {
+		return {
+			params: { slug: getSlug(entry) },
+			props: { entry },
+		};
+	});
+}
 
 const { entry } = Astro.props;
-const { Content } = await render(entry)
-const entries = await getCollection('blog');
+const { Content } = await render(entry);
+const entries = await getCollection("blog");
 ---
 
 <html>

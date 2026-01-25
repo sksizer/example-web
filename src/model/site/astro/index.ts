@@ -19,7 +19,7 @@ export const links: SiteMap = [
 			{
 				label: "Rendering",
 				url: "/astro/rendering",
-				description: "Experimenting with various inline rendering"
+				description: "Experimenting with various inline rendering",
 			},
 			{
 				label: "MDX From Collection",
@@ -29,12 +29,12 @@ export const links: SiteMap = [
 			{
 				label: "Using a layout",
 				url: "/astro/mdx/using-layout",
-				description: "Specifying a layout with an mdx page"
+				description: "Specifying a layout with an mdx page",
 			},
 			{
 				label: "Inline Collection - MDX as page and collection entry",
-				url: "/astro/inline-collection"
-			}
-		]
+				url: "/astro/inline-collection",
+			},
+		],
 	},
 ];
