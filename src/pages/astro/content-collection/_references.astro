@@ -1,0 +1,30 @@
+---
+import {getCollection, getEntries} from "astro:content";
+const parents = await getCollection("referenceExampleParents");
+
+// Pre-fetch all children data
+const parentsWithChildren = await Promise.all(
+parents.map(async (parent) => ({
+    parent,
+    children: await getEntries(parent.data.children)
+    }))
+);
+---
+
+<div>
+    <h1>References Astro</h1>
+    <ul>
+        {parentsWithChildren.map(({ parent, children }) => (
+                <li>
+                    {parent.id}
+                    {children && children.length > 0 && (
+                            <ul>
+                                {children.map((child) => (
+                                        <li>{child.id}</li>
+                                ))}
+                            </ul>
+                    )}
+                </li>
+        ))}
+    </ul>
+</div>

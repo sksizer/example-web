@@ -1,0 +1,14 @@
+---
+import Default from './default.astro'
+const references = Astro.props?.frontmatter?.references ? Astro.props?.frontmatter.references : []
+---
+<Default>
+    <slot />
+
+    <!-- SHOW REFERENCES IF PRESENT -->
+    {references && references.length > 0 && (
+        <ul>
+            {references.map((reference : string) => (<li><a href={reference}>{reference}</a></li>))}
+        </ul>
+    ) }
+</Default>

@@ -1,8 +1,107 @@
 ---
+import { site } from '../model/site-map'
+import DirectoryView from '../components/Directory.astro'
+import TreeView from '../components/TreeView.astro'
+import { getCollection } from "astro:content";
+
+const siteCollection = await getCollection("siteCollection");
+
+interface TreeNode {
+    title: string;
+    url: string | null;
+    children: TreeNode[];
+}
+
+function buildTree(collection: typeof siteCollection, rootName: string = 'Root'): TreeNode {
+    const root: TreeNode = {
+        title: rootName,
+        url: null,
+        children: []
+    };
+
+    const nodeMap = new Map<string, TreeNode>();
+    nodeMap.set('', root);
+
+    for (const entry of collection) {
+        const parts = entry.id.split('/');
+        const fileName = parts[parts.length - 1];
+        const isIndex = fileName === 'index.mdx' || fileName === 'index';
+
+        let currentPath = '';
+        for (let i = 0; i < parts.length - 1; i++) {
+            const parentPath = currentPath;
+            currentPath = currentPath ? `${currentPath}/${parts[i]}` : parts[i];
+
+            if (!nodeMap.has(currentPath)) {
+                const dirNode: TreeNode = {
+                    title: parts[i].charAt(0).toUpperCase() + parts[i].slice(1),
+                    url: null,
+                    children: []
+                };
+                nodeMap.set(currentPath, dirNode);
+
+                const parent = nodeMap.get(parentPath)!;
+                parent.children.push(dirNode);
+            }
+        }
+
+        const dirPath = parts.slice(0, -1).join('/');
+        const parentNode = nodeMap.get(dirPath) || root;
+
+        if (isIndex) {
+            parentNode.title = entry.data.title || parentNode.title;
+            parentNode.url = '/' + dirPath + (dirPath ? '/' : '');
+        } else {
+            const fileUrl = '/' + entry.id.replace(/\.mdx$/, '');
+            const fileNode: TreeNode = {
+                title: entry.data.title || fileName.replace(/\.mdx$/, ''),
+                url: fileUrl,
+                children: []
+            };
+            parentNode.children.push(fileNode);
+        }
+    }
+
+    return root;
+}
+
+const tree = buildTree(siteCollection, 'Site Navigation');
 ---
-<html>
-<head></head>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+</head>
 <body>
+<nav>
+    <h1>Links</h1>
+    <DirectoryView entries={site} />
+    <hr />
+    <h1>Dynamic Directory</h1>
+    <TreeView node={tree} />
+</nav>
+<main>
     <slot />
+</main>
+<div>
+</div>
 </body>
 </html>
+
+<style>
+    body {
+        display: grid;
+        grid-template-areas: "left center right";
+        grid-template-columns: 200px 1fr 200px;
+    }
+    nav {
+        grid-area: left;
+    }
+    main {
+        grid-area: center;
+    }
+</style>

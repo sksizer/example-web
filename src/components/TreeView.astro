@@ -1,0 +1,85 @@
+---
+interface TreeNode {
+    title: string;
+    url: string | null;
+    children: TreeNode[];
+}
+
+interface Props {
+    node: TreeNode;
+    isRoot?: boolean;
+}
+
+const { node, isRoot = true } = Astro.props;
+---
+
+{isRoot ? (
+<ul class="tree-root">
+    <li>
+        {node.url ? (
+                <a href={node.url} class="directory">{node.title}</a>
+        ) : (
+                <span class="directory">{node.title}</span>
+        )}
+        {node.children.length > 0 && (
+                <ul>
+                    {node.children.map((child) => (
+                            <Astro.self node={child} isRoot={false} />
+                    ))}
+                </ul>
+        )}
+    </li>
+</ul>
+    ) : (
+<li>
+    {node.children.length > 0 ? (
+            <>
+                {node.url ? (
+                        <a href={node.url} class="directory">{node.title}</a>
+                ) : (
+                        <span class="directory">{node.title}</span>
+                )}
+                <ul>
+                    {node.children.map((child) => (
+                            <Astro.self node={child} isRoot={false} />
+                    ))}
+                </ul>
+            </>
+    ) : (
+        node.url ? (
+                <a href={node.url}>{node.title}</a>
+        ) : (
+                <span>{node.title}</span>
+        )
+    )}
+</li>
+    )}
+
+<style>
+    .tree-root {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 1rem;
+    }
+
+    li {
+        margin: 0.25rem 0;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .directory {
+        font-weight: 600;
+    }
+</style>

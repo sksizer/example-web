@@ -1,0 +1,3 @@
+---
+children: [one, two, three]
+---
