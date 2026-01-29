@@ -5,6 +5,11 @@ Scratch space for:
 
 Using astro for education in that framework and because it is so damn convenient. 
 
+# Todo
+- [ ] Astro: content relations
+- [ ] Astro: SEO
+- [ ] Astro: Sitemap
+
 ## Misc Notes
 Used default astro generator
 
