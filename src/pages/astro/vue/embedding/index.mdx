@@ -1,0 +1,24 @@
+---
+title: Using Vue Inside of Astro
+---
+import Example from './_example.astro'
+import ExampleVueComponet from './_example.vue'
+
+With plugins Astro supports building and using other major UI framework
+components inline to Astro content.
+
+It does perform server side rendering by default, so to enable interactive
+componentry you have to use the ```client:vue``` directive.
+
+<Example />
+
+
+*no client directive*
+<ExampleVueComponet />
+<ExampleVueComponet />
+*client:inline
+<ExampleVueComponet client:only />
+
+*client:visible*
+<ExampleVueComponet client:visible />
+
