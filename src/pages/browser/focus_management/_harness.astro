@@ -1,0 +1,40 @@
+---
+---
+<div class="focusTarget">
+    Focus Target Div 1
+</div>
+<div class="focusTarget" tabindex="0">
+    Focus Target Div 2
+</div>
+<div class="focusTarget">
+    Focus Target Div 3
+</div>
+<div class="focusTargetHost">
+    <textarea class="focusTarget">
+    </textarea>
+</div>
+
+<div class="focusTargetHost">
+    <textarea class="focusTarget">
+    </textarea>
+</div>
+
+<div class="focusTargetHost">
+    <textarea class="focusTarget">
+    </textarea>
+</div>
+
+<div class="focusTargetHost">
+    <textarea class="focusTarget">
+    </textarea>
+</div>
+<script>
+    import Main from './main.ts'
+    const focusManager = Main(document.documentElement);
+</script>
+
+<style>
+    :focus {
+        background-color: red;
+    }
+</style>

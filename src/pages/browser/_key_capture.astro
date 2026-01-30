@@ -1,0 +1,14 @@
+---
+---
+
+<div>
+    Key Capture
+    <div id="host">
+    </div>
+    <textarea id="logWindow">logs here ... </textarea>
+</div>
+
+<script>
+    import Main from './_main.ts'
+    Main(document.documentElement, document.getElementById('logWindow') as HTMLInputElement)
+</script>
